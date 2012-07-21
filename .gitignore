@@ -1,0 +1,8 @@
+build
+dist
+*.map
+report.txt
+bin
+obj
+*.suo
+.local
