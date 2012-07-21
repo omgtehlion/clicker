@@ -3,8 +3,6 @@
 
 #include "stdint.h"
 
-#define LED_COUNT 14
-
 extern volatile uint8_t digits[];
 void initLeds(void);
 void InterruptHandlerHigh(void);
