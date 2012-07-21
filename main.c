@@ -13,14 +13,6 @@
 #pragma config LVP = OFF
 #pragma config XINST = ON
 
-#ifdef FASTBUILD
-    #include "leds.c"
-    #include "minimath.c"
-    #include "minisys.c"
-    #include "rand.c"
-    #include "stars.c"
-#endif
-
 void runFrame(void);
 void runStart(void);
 
@@ -34,8 +26,6 @@ void main(void)
     INTCONbits.GIEH = 0; // disable all interrupts
     RCONbits.IPEN = 1; // enable priority levels
     OSCCON = (7 << 4) | 2; // 8MHz int osc
-
-    //TRISC &= ~0x03;
 
     // setup sysTick at timer 3:
     T3CON = (1 << 4) | (0 << 1) | 1; // prescaler = 1:2, clock source = Fosc/4, enabled
@@ -68,14 +58,6 @@ void main(void)
 #pragma interruptlow InterruptHandlerLow
 void InterruptHandlerLow(void)
 {
-    if (PIR1bits.RCIF) {
-        //RxInterrupt();
-        PIR1bits.RCIF = 0;
-    }
-    if (INTCON3bits.INT2F) {
-        //RB2Interrupt();
-        INTCON3bits.INT2F = 0;
-    }
 }
 
 #pragma code InterruptVectorHigh = 0x08
@@ -93,16 +75,16 @@ void InterruptVectorLow(void)
 //---------------------------------------------------------------//
 
 uint8_t digitMap[10] = {
-126	,
-36	,
-186	,
-188	,
-228	,
-220	,
-222	,
-52	,
-254	,
-252	,
+    126,
+    36,
+    186,
+    188,
+    228,
+    220,
+    222,
+    52,
+    254,
+    252,
 };
 
 uint8_t volatile counter[DIGITS];

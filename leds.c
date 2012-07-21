@@ -26,7 +26,6 @@ void initLeds()
 }
 
 // High priority interrupt routine
-//#pragma tmpdata isr_tmpdata
 #pragma code
 #pragma interrupt InterruptHandlerHigh nosave=PROD, PCLATH, PCLATU, section("MATH_DATA"), section(".tmpdata")
 void InterruptHandlerHigh()

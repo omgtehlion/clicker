@@ -20,7 +20,7 @@ typedef long long int           int_fast64_t;
 typedef unsigned long long int  uint64_t;
 typedef unsigned long long int  uint_fast64_t;
 
-typedef unsigned int            size_t; // c++ ::new(size_t)
+typedef unsigned int            size_t;
 typedef int                     ssize_t;
 
 #endif // __TARGET_STDINT_H
